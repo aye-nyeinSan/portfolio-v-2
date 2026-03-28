@@ -1,16 +1,38 @@
-import Hero from "@/app/_components/Hero"
-import { PersonInfo } from "@type/person";
+import Hero from "@/components/Hero";
+import PillNav from "@/components/ui/PillNavBar";
+import logo from "@public/images/resize-wax-logo.png";
+import { personInfo } from "@data/data";
 
 
-const personInfo: PersonInfo = {
-  name: "Aye Nyein San",
-  title: "Software Engineer",
-  about: "With Passion And Experience",
-};
 
 export default function HomePage() {
-    return (
-        <Hero personInfo={personInfo}/>
-    )
+  return (
+    <>
+      <div className="fixed top-[1em] left-130 -translate-x-1/2 z-[1000] w-auto">
+        <PillNav
+          logo={logo.src}
+          logoAlt="Rubi Aye Nyein San"
+          items={[
+            { label: "Home", href: "/" },
+            { label: "About", href: "/about" },
+            { label: "Services", href: "/services" },
+            { label: "Contact", href: "/contact" },
+          ]}
+          activeHref="/"
+          className="custom-nav ima"
+          ease="power2.easeOut"
+          baseColor="#C69FD5"
+          pillColor="#FCFDC8"
+          hoveredPillTextColor="#FCFDC8"
+          pillTextColor="#C69FD5"
+          initialLoadAnimation={true}
+        />
+      </div>
 
+      <Hero personInfo={personInfo} />
+    
+     
+    
+    </>
+  );
 }

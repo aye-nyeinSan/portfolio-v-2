@@ -1,36 +1,6 @@
-import profileImg from "@public/images/profileStand.png";
-import Image from "next/image";
-import { PersonInfo } from "@type/person";
-
-interface HeroProps {
-  personInfo: PersonInfo;
-}
-
-export default function Hero({ personInfo }: HeroProps) {
-  return (
-    <div className="flex justify-center cursor-pointer">
-      <div className="mt-8 md:ml-10 max-sm:mx-8 drop-shadow-2xl ">
-        <Image
-          src={profileImg}
-          className="contrast-125 grayscale max-w-full hover:animate-bounce hover:mt-28"
-          width={200}
-          height={100}
-          alt={personInfo.name.toUpperCase()}
-        />
-      </div>
+export default function SocialMedia() {
+    return (
       <div>
-        <div className="ml-10 mt-44  max-sm:ml-2 max-sm:mt-10">
-          <p className="text-8xl font-highlight max-sm:text-6xl font-semibold  hover:text-primary-100">
-            {personInfo.name.toUpperCase()}
-          </p>
-          <p className="text-6xl  max-sm:text-4xl max-sm:mt-2 font-medium  hover:text-primary-100">
-            {personInfo.title}
-          </p>
-          <p className="text-4xl mt-2 max-sm:text-2xl max-sm:mt-2 font-thin  hover:text-primary-100">
-            {personInfo.about}
-          </p>
-        </div>
-
         <ul className="flex ml-8 max-sm:ml-0 justify-start ">
           <li className="ml-2 mt-2">
             <svg
@@ -86,6 +56,5 @@ export default function Hero({ personInfo }: HeroProps) {
           </li>
         </ul>
       </div>
-    </div>
-  );
+    );
 }
