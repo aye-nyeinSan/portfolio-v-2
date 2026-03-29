@@ -1,8 +1,17 @@
-import profileImg from "@public/images/profileStand.png";
-import Image from "next/image";
+'use client'
 import { PersonInfo } from "@/types/person";
-import DecryptedText from "@/components/ui/DecryptedText";
-import Lanyard from "@/components/ui/Lanyard";
+import dynamic from "next/dynamic"
+
+const Lanyard = dynamic(() => import("@/components/ui/Lanyard"), {
+  ssr: false, //make 3D model render when user opens browser
+  loading(loadingProps) {
+    if (loadingProps.isLoading) {
+        <div className="w-full h-full"> We are still loading.... </div>
+    }
+      return 
+  },
+})
+
 
 interface HeroProps {
   personInfo: PersonInfo;

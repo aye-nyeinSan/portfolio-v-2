@@ -13,12 +13,12 @@ export default function HomePage() {
           logo={logo.src}
           logoAlt="Rubi Aye Nyein San"
           items={[
-            { label: "Home", href: "/" },
+            { label: "Home", href: "/home" },
             { label: "About", href: "/about" },
             { label: "Services", href: "/services" },
             { label: "Contact", href: "/contact" },
           ]}
-          activeHref="/"
+          activeHref="/home"
           className="custom-nav ima"
           ease="power2.easeOut"
           baseColor="#C69FD5"
