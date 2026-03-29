@@ -2,7 +2,7 @@
 'use client';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, extend, useFrame } from '@react-three/fiber';
-import { useGLTF, useTexture, Environment, Lightformer, Html } from '@react-three/drei';
+import { useGLTF, useTexture, Environment, Lightformer } from '@react-three/drei';
 import {
   BallCollider,
   CuboidCollider,
@@ -39,7 +39,7 @@ export default function Lanyard({
   }, []);
 
   return (
-    <div className="relative z-0 w-full h-screen flex justify-center items-center transform scale-100 origin-center">
+    <div className="relative z-50 w-full h-full flex justify-center items-center">
       <Canvas
         camera={{ position, fov }}
         dpr={[1, isMobile ? 1.5 : 2]}
@@ -93,7 +93,6 @@ interface BandProps {
 
 function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }: BandProps) {
   const band = useRef<any>(null);
-  const hotspot = useRef<any>(null);
   const fixed = useRef<any>(null);
   const j1 = useRef<any>(null);
   const j2 = useRef<any>(null);
@@ -193,13 +192,6 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }: BandProps) {
       ang.copy(card.current.angvel());
       rot.copy(card.current.rotation());
       card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z });
-
-      if (hotspot.current) {
-        const cardPos = card.current.translation();
-        const cardRot = card.current.rotation();
-        hotspot.current.position.set(cardPos.x, cardPos.y, cardPos.z);
-        hotspot.current.quaternion.set(cardRot.x, cardRot.y, cardRot.z, cardRot.w);
-      }
     }
   });
 
@@ -271,22 +263,9 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }: BandProps) {
           useMap
           map={emojiTexture}
           repeat={[-4, 1]}
-          lineWidth={1}
+          lineWidth={2}
         />
       </mesh>
-      <group ref={hotspot}>
-        <Html
-          transform
-          sprite={false}
-          position={[2.0, -1, 0.1]}
-          className="pointer-events-none select-none"
-        >
-          <div className="flex items-center gap-1.5 bg-white rounded-full px-3 py-1.5 shadow-xl whitespace-nowrap">
-            <div className="w-1.5 h-1.5 rounded-full bg-gray-300 shrink-0" />
-            <p className="text-xs font-bold text-gray-900">Hi, I&apos;m Rubi!</p>
-          </div>
-        </Html>
-      </group>
     </>
   );
 }

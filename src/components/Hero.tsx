@@ -10,41 +10,28 @@ interface HeroProps {
 
 export default function Hero({ personInfo }: HeroProps) {
   return (
-    <div className="block justify-center min-h-screen bg-[var(--bg-primary)]">
-     
-        <Lanyard position={[0, 2, 20]} gravity={[0, -40, 0]} fov={20} transparent />
-    
+    <div className="relative flex items-center justify-between min-h-screen bg-[var(--bg-primary)] px-10 max-sm:flex-col max-sm:px-4 max-sm:gap-4 max-sm:py-10">
+      <div className="min-w-0">
+        <p className="text-8xl font-highlight max-sm:text-6xl font-semibold text-[#C69FD5]">
+          {personInfo.name.toUpperCase()}
+        </p>
+        <p className="text-6xl max-sm:text-4xl max-sm:mt-2 font-medium text-[#C69FD5] hover:text-primary-100">
+          {personInfo.title}
+        </p>
+      </div>
 
-      <div className="flex-1 min-w-0 ml-10 mt-44 max-sm:ml-2 max-sm:mt-10">
-        <p className="text-8xl font-highlight max-sm:text-6xl font-semibold ">
-          <DecryptedText
-            text={personInfo.name.toUpperCase()}
-            animateOn="inViewHover"
-            revealDirection="start"
-            sequential={false}
-            useOriginalCharsOnly={false}
-            speed={120}
-          />
-        </p>
-        <p className="text-6xl  max-sm:text-4xl max-sm:mt-2 font-medium  hover:text-primary-100">
-          <DecryptedText
-            text={personInfo.title}
-            animateOn="inViewHover"
-            revealDirection="start"
-            sequential={false}
-            useOriginalCharsOnly={false}
-            speed={150}
-          />
-        </p>
-        <p className="text-4xl mt-2 max-sm:text-2xl max-sm:mt-2 font-thin  hover:text-primary-100">
-          <DecryptedText
-            text={personInfo.about}
-            animateOn="inViewHover"
-            revealDirection="start"
-            sequential={false}
-            useOriginalCharsOnly={false}
-            speed={190}
-          />
+      <div className="absolute top-0 bottom-0 left-[45%] right-[10%] z-50 pointer-events-none [&>*]:pointer-events-auto">
+        <Lanyard
+          position={[0, 0, 20]}
+          gravity={[0, -40, 0]}
+          fov={15}
+          transparent
+        />
+      </div>
+
+      <div className="min-w-0 text-right max-sm:text-left">
+        <p className="text-4xl max-sm:text-2xl font-thin text-[#C69FD5] hover:text-primary-100">
+          {personInfo.about}
         </p>
       </div>
     </div>
