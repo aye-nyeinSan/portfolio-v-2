@@ -20,7 +20,7 @@ export default function Hero({ personInfo }: HeroProps) {
         </p>
       </div>
 
-      <div className="absolute top-0 bottom-0 left-[45%] right-[10%] z-50 pointer-events-none [&>*]:pointer-events-auto">
+      <div className="absolute inset-0 z-100 pointer-events-none [&>*]:pointer-events-auto">
         <Lanyard
           position={[0, 0, 20]}
           gravity={[0, -40, 0]}
