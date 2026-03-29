@@ -20,7 +20,9 @@ export default function Hero({ personInfo }: HeroProps) {
         </p>
       </div>
 
-      <div className="absolute inset-0 z-100 pointer-events-none [&>*]:pointer-events-auto">
+      {/* Desktop: full overlay | Mobile: contained box so the rest of the page scrolls */}
+      <div className="absolute inset-0 z-100 pointer-events-none [&>*]:pointer-events-auto 
+      max-sm:relative max-sm:inset-auto max-sm:w-70 max-sm:h-[60vh] max-sm:touch-none">
         <Lanyard
           position={[0, 0, 20]}
           gravity={[0, -40, 0]}

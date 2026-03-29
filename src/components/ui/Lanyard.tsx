@@ -41,7 +41,7 @@ export default function Lanyard({
   return (
     <div className="relative z-50 w-full h-full flex justify-center items-center">
       <Canvas
-        camera={{ position, fov }}
+        camera={{ position, fov: isMobile ? 10 : fov }}
         dpr={[1, isMobile ? 1.5 : 2]}
         gl={{ alpha: transparent }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
@@ -199,7 +199,7 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }: BandProps) {
 
   return (
     <>
-      <group position={[1.5, 4, 0]}>
+      <group position={isMobile ? [0, 4, 0] : [1.5, 4, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type={'fixed' as RigidBodyProps['type']} />
         <RigidBody position={[5, 0, 0]} ref={j1} {...segmentProps} type={'dynamic' as RigidBodyProps['type']}>
           <BallCollider args={[0.1]} />
