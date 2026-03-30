@@ -6,10 +6,9 @@ import ThemeToggle from "@/components/ui/ThemeToggle";
 import logo from "@public/images/resize-wax-logo.png";
 
 const navItems = [
-  { label: "Home", href: "/home" },
-  { label: "About", href: "/aboutme" },
+  { label: "Blog", href: "/blog" },
   { label: "Projects", href: "/projects" },
-  { label: "Contact", href: "/contact" },
+  { label: "Certificates", href: "/certificate" }
 ];
 
 export default function NavBar() {

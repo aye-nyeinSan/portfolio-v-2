@@ -13,6 +13,7 @@ export type PillNavItem = {
 export interface PillNavProps {
   logo: string;
   logoAlt?: string;
+  logoHref?: string;
   items: PillNavItem[];
   activeHref?: string;
   className?: string;
@@ -28,6 +29,7 @@ export interface PillNavProps {
 const PillNav: React.FC<PillNavProps> = ({
   logo,
   logoAlt = 'Logo',
+  logoHref = '/home',
   items,
   activeHref,
   className = '',
@@ -255,38 +257,21 @@ const PillNav: React.FC<PillNavProps> = ({
         aria-label="Primary"
         style={cssVars}
       >
-        {isRouterLink(items?.[0]?.href) ? (
-          <Link
-            href={items[0].href}
-            aria-label="Home"
-            onMouseEnter={handleLogoEnter}
-            role="menuitem"
-            ref={el => {
-              logoRef.current = el;
-            }}
-            className="rounded-full p-[2] inline-flex items-center justify-center overflow-hidden"
-            style={{
-              background: 'var(--base, #000)'
-            }}
-          >
-            <Image src={logo} alt={logoAlt} ref={logoImgRef} width={80} height={80} className="object-cover block rounded-full" />
-          </Link>
-        ) : (
-          <Link
-            href={items?.[0]?.href || '#'}
-            aria-label="Home"
-            onMouseEnter={handleLogoEnter}
-            ref={el => {
-              logoRef.current = el;
-            }}
-            className="rounded-full p-[2] inline-flex items-center justify-center overflow-hidden"
-            style={{
-              background: 'var(--base, #000)'
-            }}
-          >
-            <Image src={logo} alt={logoAlt} ref={logoImgRef} width={80} height={80} className="object-cover block rounded-full" />
-          </Link>
-        )}
+        <Link
+          href={logoHref}
+          aria-label="Home"
+          onMouseEnter={handleLogoEnter}
+          role="menuitem"
+          ref={el => {
+            logoRef.current = el;
+          }}
+          className="rounded-full p-[2] inline-flex items-center justify-center overflow-hidden"
+          style={{
+            background: 'var(--base, #000)'
+          }}
+        >
+          <Image src={logo} alt={logoAlt} ref={logoImgRef} width={80} height={80} className="object-cover block rounded-full" />
+        </Link>
 
         <div
           ref={navItemsRef}
