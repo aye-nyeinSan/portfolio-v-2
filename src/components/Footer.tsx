@@ -1,0 +1,27 @@
+import Link from "next/link";
+import { Separator } from "./ui/separator";
+
+export default function Footer() {
+    return (
+      <div className="flex flex-col items-center text-gray-600 justify-center min-30h-screen bg-[var(--bg-primary)] px-10 max-sm:flex-col max-sm:px-4 max-sm:gap-4 max-sm:py-10">
+        <Separator />
+        <div>
+          @2026. Built with <span className="font-semibold">NextJS </span>,{" "}
+          <span className="font-semibold"> shadcn/ui </span>and{" "}
+          <span className="font-semibold"> TailwindCSS </span>
+          with help of <span className="font-bold">ClaudeCode</span>.
+        </div>
+        <div>
+          Developed by{" "}
+          <span className="text-purple-400">Aye Nyein San 'Rubi'</span>. Source
+          code available on &nbsp;
+          <Link
+            href={"https://github.com/aye-nyeinSan"}
+            className="text-purple-400 cursor-pointer font-medium "
+          >
+            Github
+          </Link>
+        </div>
+      </div>
+    );
+}
