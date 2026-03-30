@@ -15,9 +15,10 @@ export default function ErrorPage({
   }, [error]);
 
   return (
-    <div>
+    <div className="flex items-center justify-center text-4xl text-center min-h-screen">
+  
       <h2>Something went wrong!</h2>
-      <button
+      <button className="underline cursor-pointer"
         onClick={
           // Attempt to recover by re-fetching and re-rendering the segment
           () => unstable_retry()

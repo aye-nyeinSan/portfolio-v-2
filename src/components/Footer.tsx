@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Separator } from "./ui/separator";
+import SocialMedia from "./SocialMedia";
 
 export default function Footer() {
     return (
@@ -16,11 +17,14 @@ export default function Footer() {
           <span className="text-purple-400">Aye Nyein San 'Rubi'</span>. Source
           code available on &nbsp;
           <Link
-            href={"https://github.com/aye-nyeinSan"}
+            href={"https://github.com/aye-nyeinSan/portfolio-v-2"}
             className="text-purple-400 cursor-pointer font-medium "
           >
             Github
           </Link>
+        </div>
+        <div className="m-2">
+          <SocialMedia />
         </div>
       </div>
     );
