@@ -1,12 +1,10 @@
 "use client";
 
-import Wax from "@public/images/transparant-wax.png";
-import AnimatedImage from "@/components/ui/AnimatedImage";
 import { Button } from "@/components/ui/button";
-import RubiStand from "@public/images/profileStand.png";
 import RubiMic from "@public/images/rubi-mic.jpeg"
 import Image from "next/image";
 import { motion } from "motion/react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const fadeInLeft = {
   hidden: { opacity: 0, x: -60 },
@@ -57,25 +55,16 @@ export default function AboutMeSlot() {
           <h2 className="scroll-m-20 text-center text-4xl pr-2 font-extrabold tracking-tight text-brand-text-bg text-brand-text mb-8">
             About Me.
           </h2>
-          <div className="text-2xl font-light font-stretch-condensed text-justify">
-            <p>
-              I'm <span className="text-4xl">Aye Nyein San</span>, a Software
-              Engineer based in Thailand. I started with frontends, but kept
-              finding myself more curious about what was happening behind the
-              scenes — the servers, the pipelines, the infrastructure holding it
-              all together.
-            </p>
-            <p>
-              Now I gravitate toward backend engineering, cloud architecture,
-              and MLOps. There's something satisfying about a clean CI/CD
-              pipeline or a model that actually serves reliably in production —
-              the kind of work that's invisible when it's done right.
-            </p>
-            <p>
-              I'm always poking at new tools in the cloud-native and ML
-              engineering space. Good infrastructure is quiet, and I like
-              building things that stay quiet.
-            </p>
+          <div className="font-light font-stretch-condensed text-justify">
+            <ScrollReveal
+              baseOpacity={0.1}
+              enableBlur
+              baseRotation={0}
+              blurStrength={4}
+              textClassName="text-brand-text-secondary text-2xl"
+            >
+              {"I'm Aye Nyein San, a Software Engineer based in Thailand. I started with frontends, but kept finding myself more curious about what was happening behind the scenes — the servers, the pipelines, the infrastructure holding it all together. Now I gravitate toward backend engineering, cloud architecture, and MLOps. There's something satisfying about a clean CI/CD pipeline or a model that actually serves reliably in production — the kind of work that's invisible when it's done right. I'm always poking at new tools in the cloud-native and ML engineering space. Good infrastructure is quiet, and I like building things that stay quiet."}
+            </ScrollReveal>
             <motion.div
               variants={fadeInUp}
               initial="hidden"
@@ -121,7 +110,13 @@ export default function AboutMeSlot() {
               transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
               className="mt-4"
             >
-              <Button onClick={()=> {window.alert("I need to implement this one!")}}>Download Resume</Button>
+              <Button
+                onClick={() => {
+                  window.alert("I need to implement this one!");
+                }}
+              >
+                Download Resume
+              </Button>
             </motion.div>
           </div>
         </motion.div>
