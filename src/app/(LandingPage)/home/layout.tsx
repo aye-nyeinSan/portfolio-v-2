@@ -1,4 +1,5 @@
 import React from "react";
+import CurvedLoop from "@/components/ui/CurvedLoop";
 
 export default function HomeLayout({
   children,
@@ -18,6 +19,17 @@ export default function HomeLayout({
   return (
     <div>
       {children}
+      <div className="bg-brand-bg top-0">
+        <CurvedLoop
+          marqueeText="open to work ✦ Rubi ✦ Aye Nyein San ✦ "
+          speed={2}
+          curveAmount={400}
+          direction="right"
+          interactive
+          className="fill-brand-text"
+        />
+      </div>
+
       {aboutme}
       {projects}
       {education}
