@@ -16,7 +16,7 @@ const LinkedInIcon = () => (
 
 function Card({ rec }: { rec: Recommendation }) {
   return (
-    <div className="rounded-3xl p-10 max-sm:p-5 flex flex-col h-full border border-dashed border-brand/30 bg-brand-bg">
+    <div className="rounded-3xl p-10 max-sm:p-5 flex flex-col h-full border border-dashed border-brand bg-brand-bg">
       {/* Header */}
       <div className="flex items-start gap-4 mb-6 max-sm:mb-4">
         <div className="flex-1">
