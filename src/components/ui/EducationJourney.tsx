@@ -1,74 +1,29 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import {
   motion,
   useScroll,
   useTransform,
   useMotionValueEvent,
 } from "motion/react";
-import { useState } from "react";
 import type { Education } from "@data/Education";
+import { GraduationIcon, AwardIcon, StarIcon } from "@/components/ui/IconSvg";
+
+function useIsMobile(breakpoint = 640) {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${breakpoint}px)`);
+    setIsMobile(mql.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, [breakpoint]);
+  return isMobile;
+}
 
 interface EducationJourneyProps {
   education: Education[];
-}
-
-function GraduationIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
-      <path d="M22 10v6" />
-      <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
-    </svg>
-  );
-}
-
-function AwardIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526" />
-      <circle cx="12" cy="8" r="6" />
-    </svg>
-  );
-}
-
-function StarIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-    </svg>
-  );
 }
 
 function getIcon(icon: Education["icon"]) {
@@ -84,21 +39,24 @@ function getIcon(icon: Education["icon"]) {
   }
 }
 
-// Card width + gap constant for positioning
-const CARD_W = 420;
-const GAP = 32;
-const STEP = CARD_W + GAP;
+// Card width + gap constants for positioning
+const CARD_W_DESKTOP = 420;
+const CARD_W_MOBILE = 280;
+const GAP_DESKTOP = 32;
+const GAP_MOBILE = 20;
 
 function JourneyCard({
   item,
   index,
   total,
   activeIndex,
+  cardWidth,
 }: {
   item: Education;
   index: number;
   total: number;
   activeIndex: number;
+  cardWidth: number;
 }) {
   const isLast = index === total - 1;
   const distance = Math.abs(index - activeIndex);
@@ -107,7 +65,7 @@ function JourneyCard({
   return (
     <motion.div
       className="relative flex flex-col items-center shrink-0"
-      style={{ width: CARD_W }}
+      style={{ width: cardWidth }}
       animate={{
         scale: isActive ? 1 : 0.88,
         opacity: isActive ? 1 : 0.4,
@@ -132,7 +90,7 @@ function JourneyCard({
               : "var(--color-brand, rgba(198,159,213,0.3))",
           }}
           transition={{ duration: 0.3 }}
-          className="relative z-10 w-14 h-14 rounded-full border-2 border-brand bg-brand-bg flex items-center justify-center text-brand-text shrink-0"
+          className="relative z-10 w-14 h-14 max-sm:w-10 max-sm:h-10 rounded-full border-2 border-brand bg-brand-bg flex items-center justify-center text-brand-text shrink-0 max-sm:[&_svg]:w-4 max-sm:[&_svg]:h-4"
         >
           {getIcon(item.icon)}
         </motion.div>
@@ -174,10 +132,15 @@ function JourneyCard({
 export default function EducationJourney({ education }: EducationJourneyProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const isMobile = useIsMobile();
   const count = education.length;
 
+  const cardW = isMobile ? CARD_W_MOBILE : CARD_W_DESKTOP;
+  const gap = isMobile ? GAP_MOBILE : GAP_DESKTOP;
+  const step = cardW + gap;
+
   // Total horizontal travel: move from card 0 centered to card N-1 centered
-  const totalTravel = (count - 1) * STEP;
+  const totalTravel = (count - 1) * step;
 
   // Section height: enough vertical scroll to drive through all cards
   // Each card gets ~100vh of scroll
@@ -226,13 +189,13 @@ export default function EducationJourney({ education }: EducationJourneyProps) {
         </motion.div>
 
         {/* Horizontal track — first card starts centered via left padding */}
-        <div className="w-full overflow-hidden ">
+        <div className="w-full overflow-hidden  ">
           <motion.div
             className="flex items-start my-6"
             style={{
               x: translateX,
-              gap: GAP,
-              paddingLeft: `calc(50vw - ${CARD_W / 2}px)`,
+              gap: gap,
+              paddingLeft: `calc(50vw - ${cardW / 2}px)`,
             }}
           >
             {education.map((item, i) => (
@@ -242,6 +205,7 @@ export default function EducationJourney({ education }: EducationJourneyProps) {
                 index={i}
                 total={count}
                 activeIndex={activeIndex}
+                cardWidth={cardW}
               />
             ))}
           </motion.div>
