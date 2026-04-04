@@ -4,67 +4,10 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 import type { WorkExperience } from "@data/WorkExperience";
+import { BriefcaseIcon, MapPinIcon, LinkIcon } from "@/components/ui/IconSvg";
 
 interface WorkTimelineProps {
   experiences: WorkExperience[];
-}
-
-function BriefcaseIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-      <rect width="20" height="14" x="2" y="6" rx="2" />
-    </svg>
-  );
-}
-
-function MapPinIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
-      <circle cx="12" cy="10" r="3" />
-    </svg>
-  );
-}
-
-function LinkIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M15 3h6v6" />
-      <path d="M10 14 21 3" />
-      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-    </svg>
-  );
 }
 
 function TimelineItem({
@@ -83,17 +26,15 @@ function TimelineItem({
     offset: ["start end", "center center"],
   });
 
-  // Animate the vertical line fill as it scrolls into view
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const cardOpacity = useTransform(scrollYProgress, [0, 0.3, 1], [0, 0.5, 1]);
   const cardY = useTransform(scrollYProgress, [0, 1], [60, 0]);
 
   const isLeft = index % 2 === 0;
 
   return (
-    <div ref={ref} className="relative grid grid-cols-[1fr_auto_1fr] gap-6 max-sm:grid-cols-[auto_1fr] max-sm:gap-4">
-      {/* Left side content (or empty) */}
-      <div className={`flex ${isLeft ? "justify-end" : ""} max-sm:hidden`}>
+    <div ref={ref} className="relative grid grid-cols-[auto_1fr] gap-4 sm:grid-cols-[1fr_auto_1fr] sm:gap-6">
+      {/* Left side content (or empty) — desktop only */}
+      <div className={`hidden sm:flex ${isLeft ? "justify-end" : ""}`}>
         {isLeft ? (
           <motion.div style={{ opacity: cardOpacity, y: cardY }} className="w-full max-w-md">
             <Card experience={experience} />
@@ -106,40 +47,39 @@ function TimelineItem({
       </div>
 
       {/* Center timeline */}
-      <div className="relative flex flex-col items-center">
-        {/* Node */}
+      <div className="relative flex flex-col items-center col-start-1 sm:col-start-2 row-start-1">
+        {/* Node at the start of the line */}
         <motion.div
-          initial={{ scale: 0 }}
-          whileInView={{ scale: 1 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
-          className="relative z-10 w-12 h-12 rounded-full border-2 border-brand bg-brand-bg dark:bg-[#252525] flex items-center justify-center text-brand-text shrink-0"
+          transition={{ duration: 0.4 }}
+          className="relative z-10 w-9 h-9 sm:w-12 sm:h-12 rounded-full border-2 border-brand bg-brand-bg dark:bg-[#252525] flex items-center justify-center text-brand-text shrink-0 [&_svg]:w-4 [&_svg]:h-4 sm:[&_svg]:w-5 sm:[&_svg]:h-5"
         >
           <BriefcaseIcon />
         </motion.div>
 
-        {/* Vertical line */}
-        {!isLast && (
-          <div className="relative w-[2px] flex-1 min-h-[40px] bg-brand/15">
-            <motion.div
-              className="absolute top-0 left-0 w-full bg-brand/50"
-              style={{ height: lineHeight }}
-            />
-          </div>
-        )}
+        {/* Vertical line — stretches full height of the row */}
+        <div className="w-[2px] flex-1 min-h-[80px] bg-brand" />
+
+        {/* Extend line below the card with padding */}
+        {!isLast && <div className="w-[2px] h-8 bg-brand" />}
       </div>
 
-      {/* Right side content (or empty) */}
-      <div className={`flex ${!isLeft ? "justify-start" : ""} max-sm:justify-start`}>
-        {/* Mobile: always show card on right */}
-        <div className="hidden max-sm:block w-full">
+      {/* Right side content */}
+      <div className={`flex justify-start col-start-2 sm:col-start-auto row-start-1 sm:row-start-auto ${!isLeft ? "sm:justify-start" : ""}`}>
+        {/* Mobile: date badge + card */}
+        <div className="block sm:hidden w-full">
           <motion.div style={{ opacity: cardOpacity, y: cardY }}>
+            <span className="inline-block text-sm font-medium text-brand-text-secondary mb-2 px-3 py-1 rounded-full border border-brand">
+              {experience.date}
+            </span>
             <Card experience={experience} />
           </motion.div>
         </div>
 
         {/* Desktop */}
-        <div className="max-sm:hidden w-full max-w-md">
+        <div className="hidden sm:block w-full max-w-md">
           {!isLeft ? (
             <motion.div style={{ opacity: cardOpacity, y: cardY }}>
               <Card experience={experience} />
@@ -157,7 +97,7 @@ function TimelineItem({
 
 function Card({ experience }: { experience: WorkExperience }) {
   return (
-    <div className="rounded-3xl p-8 max-sm:p-5 border border-dashed border-brand/30 bg-brand-text-secondary dark:bg-amber-100 transition-colors w-full">
+    <div className="rounded-3xl max-sm:rounded-2xl p-8 max-sm:p-4 border border-dashed border-brand/30 bg-brand-text-secondary dark:bg-amber-100 transition-colors w-full">
       {/* Header */}
       <div className="flex items-start justify-between gap-3 mb-2">
         <h3 className="text-xl max-sm:text-lg font-bold text-brand-bg dark:text-brand-text-secondary leading-tight">
@@ -174,14 +114,25 @@ function Card({ experience }: { experience: WorkExperience }) {
       </div>
 
       {/* Company */}
-      <a
-        href={experience.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-lg font-semibold text-brand-bg dark:text-brand-text hover:underline underline-offset-4"
-      >
-        {experience.company}
-      </a>
+      <div className="flex items-center gap-3 mt-1">
+        {experience.companyLogo && (
+          <Image
+            src={experience.companyLogo}
+            alt={`${experience.company} logo`}
+            width={36}
+            height={36}
+            className="rounded-full shrink-0 object-cover"
+          />
+        )}
+        <a
+          href={experience.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-lg font-semibold text-brand-bg dark:text-brand-text hover:underline underline-offset-4"
+        >
+          {experience.company}
+        </a>
+      </div>
       <p className="text-sm text-brand-bg/80 dark:text-brand-text-secondary mt-1">
         {experience.companyInfo}
       </p>
@@ -192,7 +143,7 @@ function Card({ experience }: { experience: WorkExperience }) {
           <MapPinIcon />
           {experience.location}
         </span>
-        <span className="max-sm:hidden">{experience.date}</span>
+        <span>{experience.date}</span>
       </div>
 
       {/* Skills */}
@@ -215,7 +166,7 @@ function Card({ experience }: { experience: WorkExperience }) {
             .map((photo, i) => (
               <div
                 key={i}
-                className="relative w-full aspect-video rounded-2xl overflow-hidden shrink-0"
+                className="relative w-full aspect-video rounded-2xl max-sm:rounded-xl overflow-hidden shrink-0"
               >
                 <Image
                   src={`/${photo.replace(/^public\//, "")}`}
