@@ -15,7 +15,7 @@ interface HeroProps {
 
 export default function Hero({ personInfo }: HeroProps) {
   return (
-    <div className="relative flex items-center justify-between min-h-screen bg-brand-bg px-10 max-sm:flex-col max-sm:px-4 max-sm:gap-4 max-sm:py-10">
+    <div className="relative flex items-center justify-between min-h-screen bg-brand-bg px-10 max-sm:flex-col max-sm:px-4 max-sm:gap-4 max-sm:py-10 max-sm:pt-20">
       <div className="min-w-0">
         <p className="text-8xl font-highlight max-sm:text-6xl font-semibold text-brand">
           {personInfo.name.toUpperCase()}

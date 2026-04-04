@@ -251,9 +251,9 @@ const PillNav: React.FC<PillNavProps> = ({
   } as React.CSSProperties;
 
   return (
-    <div className="absolute top-[1em] z-[1000] w-full left-0 md:w-auto md:left-auto">
+    <div className="relative z-[1000] w-full md:w-auto">
       <nav
-        className={`w-full md:w-max flex items-center justify-between md:justify-start box-border px-4 md:px-0 ${className}`}
+        className={`w-full md:w-max flex items-center justify-start gap-2 box-border px-4 md:px-0 ${className}`}
         aria-label="Primary"
         style={cssVars}
       >
@@ -270,7 +270,7 @@ const PillNav: React.FC<PillNavProps> = ({
             background: 'var(--base, #000)'
           }}
         >
-          <Image src={logo} alt={logoAlt} ref={logoImgRef} width={80} height={80} className="object-cover block rounded-full" />
+          <Image src={logo} alt={logoAlt} ref={logoImgRef} width={80} height={80} className="object-cover block rounded-full w-12 h-12 md:w-20 md:h-20" />
         </Link>
 
         <div
@@ -378,10 +378,8 @@ const PillNav: React.FC<PillNavProps> = ({
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
           aria-expanded={isMobileMenuOpen}
-          className="md:hidden rounded-full border-0 flex flex-col items-center justify-center gap-1 cursor-pointer p-0 relative"
+          className="md:hidden rounded-full border-0 flex flex-col items-center justify-center gap-1 cursor-pointer p-0 relative w-10 h-10"
           style={{
-            width: 'var(--nav-h)',
-            height: 'var(--nav-h)',
             background: 'var(--base, #000)'
           }}
         >
