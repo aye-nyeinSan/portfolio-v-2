@@ -8,13 +8,15 @@ export default function HomeLayout({
   education,
   works,
   recommendation,
+  aboutportfolio,
 }: {
   children: React.ReactNode;
   aboutme: React.ReactNode;
   projects: React.ReactNode;
   education: React.ReactNode;
-  works: React. ReactNode
+  works: React.ReactNode;
   recommendation: React.ReactNode;
+  aboutportfolio: React.ReactNode;
 }) {
   return (
     <div>
@@ -35,6 +37,7 @@ export default function HomeLayout({
       {education}
       {works}
       {recommendation}
+      {aboutportfolio}
     </div>
   );
 }
