@@ -9,7 +9,7 @@ export async function GET() {
 }
 
 export async function POST() {
-
+ 
   const res = await fetch(`${EXTERNAL_API}/resume/love-votes`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
