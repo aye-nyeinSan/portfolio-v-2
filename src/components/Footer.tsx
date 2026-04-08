@@ -5,7 +5,7 @@ import SocialMedia from "./SocialMedia";
 export default function Footer() {
   return (
     <>
-      <Separator className="dark:bg-brand-text/30" />
+      <Separator className="dark:bg-brand-text/30 " />
       <div className="flex flex-col items-center text-gray-600 justify-center min-30h-screen bg-[var(--bg-primary)] px-10 max-sm:flex-col max-sm:px-4 max-sm:gap-4 max-sm:py-10">
         <div className="mt-3">
           @2026. Built with <span className="font-semibold">NextJS </span>,{" "}
