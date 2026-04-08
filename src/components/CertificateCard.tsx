@@ -1,42 +1,65 @@
+"use client";
+
 import {
   Card,
-  CardAction,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import type { CertificateData } from "@/types/person";
 
-// Badge
-{/* <span className="text-sm font-medium text-brand-text-secondary mb-4 px-3 py-1 rounded-full border border-brand">
-  {item.date}
-</span>; */}
 
 export default function CertificateCard() {
+  const [page, setPage] = useState(1);
 
+  const { data, isPending, error } = useQuery<CertificateData[]>({
+    queryKey: ["certificates", page],
+    queryFn: () =>
+      fetch(`/api/certificates?page=${page}`).then((r) => r.json()),
+  });
 
-      return (
-        <Card className="relative mx-auto w-full max-w-sm pt-0">
-          <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
-          <img
-            src="https://avatar.vercel.sh/shadcn1"
-            alt="Event cover"
-            className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
-          />
-          <CardHeader>
-            <CardAction>
-            </CardAction>
-            <CardTitle>Design systems meetup</CardTitle>
-            <CardDescription>
-              A practical talk on component APIs, accessibility, and shipping
-              faster.
-            </CardDescription>
-          </CardHeader>
-          <CardFooter>
-          </CardFooter>
-        </Card>
-      );
-    
+  if (isPending) return <span className="bg-brand">Loading...</span>;
+  if (error)
+    return <span className="bg-brand">Oops! Something went wrong!</span>;
 
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+      {data?.map((cert) => (
+        <a
+          key={cert.name}
+          href={cert.sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Card className="relative mx-auto w-full max-w-sm pt-0 overflow-hidden hover:shadow-lg transition-shadow">
+            <img
+              src={cert.imageUrl}
+              alt={cert.name}
+              className="aspect-square w-full object-contain bg-white p-4"
+            />
+            <CardHeader>
+              <CardTitle className="text-sm leading-tight">
+                {cert.name}
+              </CardTitle>
+              <CardDescription>{cert.orgnization}</CardDescription>
+            </CardHeader>
+            <CardFooter className="flex justify-between text-xs text-muted-foreground">
+              <span>Earned: {cert.earnedDate}</span>
+              {cert.expirationDate && (
+                <span>
+                  Expires:{" "}
+                  {cert.expirationDate
+                    ? cert.expirationDate
+                    : "This credential does not expire"}
+                </span>
+              )}
+            </CardFooter>
+          </Card>
+        </a>
+      ))}
+    </div>
+  );
 }
