@@ -34,13 +34,13 @@ export default function CertificateCard() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Card className="relative mx-auto w-full max-w-sm pt-0 overflow-hidden hover:shadow-lg transition-shadow">
+          <Card className="relative mx-auto w-full max-w-sm pt-0  overflow-hidden hover:shadow-lg transition-shadow">
             <img
               src={cert.imageUrl}
               alt={cert.name}
-              className="aspect-square w-full object-contain bg-white p-4"
+              className="aspect-square w-full object-contain bg-white px-4"
             />
-            <CardHeader>
+            <CardHeader >
               <CardTitle className="text-sm leading-tight">
                 {cert.name}
               </CardTitle>
