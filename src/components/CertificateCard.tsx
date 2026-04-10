@@ -12,15 +12,18 @@ import { useState } from "react";
 import type { CertificateData } from "@/types/person";
 
 
+
 export default function CertificateCard() {
   const [page, setPage] = useState(1);
 
-  const { data, isPending, error } = useQuery<CertificateData[]>({
+  const { data, isPending, error, isFetching} = useQuery<CertificateData[]>({
     queryKey: ["certificates", page],
     queryFn: () =>
       fetch(`/api/certificates?page=${page}`).then((r) => r.json()),
+    staleTime: 10 * 60 * 1000, // 10 minutes
+    gcTime: 25 * 60 * 1000, // 25 minutes
   });
-
+  if (isFetching) return <span className="bg-brand">Fetching....</span>;
   if (isPending) return <span className="bg-brand">Loading...</span>;
   if (error)
     return <span className="bg-brand">Oops! Something went wrong!</span>;
