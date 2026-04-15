@@ -2,7 +2,7 @@
 
 import { Eye } from "lucide-react";
 
-export function TotalVisitors({ count }: { count: number }) {
+export function TotalVisitors({ count = 0 }: { count?: number }) {
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 flex flex-col items-center gap-4 flex-1">
       <div className="flex items-center gap-2 self-start">

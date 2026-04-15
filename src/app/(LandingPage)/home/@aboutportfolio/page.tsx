@@ -37,7 +37,7 @@ export default function AboutPortfolio() {
   });
 
   if (isPending) return <span className="bg-brand">Loading...</span>;
-  if (error || !data) return <span className="bg-brand">Oops! Something went wrong!</span>;
+  if (error) return <span className="bg-brand">Oops! Something went wrong!</span>;
 
   return (
     <section className="bg-brand-bg px-10  max-sm:px-4 max-sm:py-10">
@@ -50,8 +50,8 @@ export default function AboutPortfolio() {
             Insights and metrics about this portfolio website
           </p>
           <div className="flex gap-6 max-sm:flex-col">
-            <TotalVisitors count={data.total_visitors} />
-            <AppreciationCount count={data.total_love_count} />
+            <TotalVisitors count={data.total_visitors?? 0} />
+            <AppreciationCount count={data.total_love_count?? 0} />
           </div>
         </div>
       </div>
