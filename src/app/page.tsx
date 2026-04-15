@@ -4,9 +4,4 @@ export default function Home() {
   
   redirect("/home")
 
-  return (
-    <div>
-       
-    </div>
-  );
 }
