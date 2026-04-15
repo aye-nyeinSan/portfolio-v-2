@@ -8,8 +8,9 @@ import { useEffect, useRef } from "react";
 
 export default function AboutPortfolio() {
     const queryClient = useQueryClient();
-     const hasTracked = useRef(false);  
-
+    const hasTracked = useRef(false); 
+  
+    // Clicking love button 
     const { mutate }=useMutation({
       mutationFn: () => fetch("/api/resumeapi/visits", { method: "POST" }),
       onSuccess: () => {
@@ -23,14 +24,20 @@ export default function AboutPortfolio() {
             mutate()
         }
     },[mutate])
-
-  const { data, isPending, error } = useQuery({
+  
+  //fetching data 
+  const { data, isPending, error } = useQuery<{
+    total_visitors: number;
+    total_love_count: number;
+  }>({
     queryKey: ["visitorStatus"],
     queryFn: () => fetch("/api/resumeapi").then((r) => r.json()),
+    staleTime: 10 * 60 * 1000, // 10 minutes
+    gcTime: 25 * 60 * 1000, // 25 minutes
   });
 
   if (isPending) return <span className="bg-brand">Loading...</span>;
-  if (error) return <span className="bg-brand">Oops! Something went wrong!</span>;
+  if (error || !data) return <span className="bg-brand">Oops! Something went wrong!</span>;
 
   return (
     <section className="bg-brand-bg px-10  max-sm:px-4 max-sm:py-10">
@@ -43,8 +50,8 @@ export default function AboutPortfolio() {
             Insights and metrics about this portfolio website
           </p>
           <div className="flex gap-6 max-sm:flex-col">
-            <TotalVisitors count={data?.total_visitors ?? 0} />
-            <AppreciationCount count={data?.total_love_count ?? 0} />
+            <TotalVisitors count={data.total_visitors} />
+            <AppreciationCount count={data.total_love_count} />
           </div>
         </div>
       </div>

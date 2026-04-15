@@ -6,6 +6,7 @@ import QueryProvider from "@/components/QueryProvider";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,11 +31,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="light">
-          <QueryProvider>
-            <NavBar />
-            {children}
-            <Footer />
-          </QueryProvider>
+          <NavBar />
+          <QueryProvider>{children}</QueryProvider>
+
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

@@ -1,6 +1,6 @@
 import { NextResponse, } from "next/server";
 
-const EXTERNAL_API = "http://127.0.0.1:8000";
+const EXTERNAL_API = process.env.RESUME_API_URL;
 
 export async function GET() {
   const res = await fetch(`${EXTERNAL_API}/resume/visitor-status`);
