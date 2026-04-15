@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Heart } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query"; 
 
-export function AppreciationCount({ count }: { count: number }) {
+export function AppreciationCount({ count = 0 }: { count?: number }) {
   const [liked, setLiked] = useState(false);
     
   const queryClient = useQueryClient();
