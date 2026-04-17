@@ -15,7 +15,7 @@ export  function ProjectsCarousel() {
             align: "start",
           }}
           orientation="vertical"
-          className="w-full max-w-xs mt-20"
+          className="w-full max-w-xs mt-20 cursor-pointer"
         >
           <CarouselContent className="-mt-1 h-[270px]">
             {Array.from({ length: 5 }).map((_, index) => (
@@ -32,12 +32,12 @@ export  function ProjectsCarousel() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="cursor-pointer" />
+          <CarouselNext className="cursor-pointer" />
         </Carousel>
         {/*  hint */}
         <p className="mt-20 text-sm text-brand-text-secondary">
-         Click to see details
+          Click to see details
         </p>
       </>
     );
