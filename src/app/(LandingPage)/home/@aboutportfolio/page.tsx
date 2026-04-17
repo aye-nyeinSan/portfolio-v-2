@@ -4,26 +4,25 @@ import { useQuery } from "@tanstack/react-query";
 import { TotalVisitors } from "@/components/TotalVistors";
 import { AppreciationCount } from "@/components/AppreciationCount";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
+
+const VISITOR_TRACKED_KEY = "visitor-tracked";
 
 export default function AboutPortfolio() {
     const queryClient = useQueryClient();
-    const hasTracked = useRef(false); 
-  
-    // Clicking love button 
-    const { mutate }=useMutation({
+
+    const { mutate } = useMutation({
       mutationFn: () => fetch("/api/resumeapi/visits", { method: "POST" }),
       onSuccess: () => {
-        // refresh the GET query
         queryClient.invalidateQueries({ queryKey: ["visitorStatus"] });
       },
     });
+
     useEffect(() => {
-        if (!hasTracked.current) {
-            hasTracked.current = true;
-            mutate()
-        }
-    },[mutate])
+      if (sessionStorage.getItem(VISITOR_TRACKED_KEY) === "visited") return;
+      sessionStorage.setItem(VISITOR_TRACKED_KEY, "visited");
+      mutate();
+    }, [mutate]);
   
   //fetching data 
   const { data, isPending, error } = useQuery<{
