@@ -23,8 +23,7 @@ export default function Hero({ personInfo }: HeroProps) {
         <p className="text-6xl max-sm:text-4xl max-sm:mt-2 font-medium text-brand">
           {personInfo.title}
         </p>
-        <div className="m-3">
-          {" "}
+        <div className="relative z-[110] min-w-0 m-3 cursor-pointer">
           <SocialMedia />
         </div>
       </div>

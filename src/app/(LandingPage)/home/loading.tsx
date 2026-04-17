@@ -1,6 +1,6 @@
 export default function HomePageLoading() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-4">
+    <div className="flex flex-col items-center justify-center min-h-screen px-4 bg-brand-bg">
       <div className="w-full max-w-[480px] max-sm:max-w-[280px]">
         <div
           style={{
@@ -15,7 +15,6 @@ export default function HomePageLoading() {
             width="100%"
             height="100%"
             style={{ position: "absolute" }}
-            frameBorder="0"
             className="giphy-embed"
             allowFullScreen
             title="Loading animation"
