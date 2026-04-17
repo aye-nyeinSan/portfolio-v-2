@@ -63,7 +63,7 @@ export default function ProjectsPage() {
                       {project.tags.map((tag) => (
                         <li
                           key={tag}
-                          className="rounded-full border border-brand-text-secondary/20 px-2.5 py-0.5 text-xs text-brand-text-secondary transition-colors group-hover:border-brand-bg/40 group-active:border-brand-bg/40 group-focus-within:border-brand-bg/40 group-hover:text-brand-bg group-active:text-brand-bg group-focus-within:text-brand-bg"
+                          className="rounded-full border border-brand-text-secondary/30 px-2.5 py-0.5 text-xs text-brand-text-secondary transition-colors group-hover:border-brand-bg/60 group-active:border-brand-bg/60 group-focus-within:border-brand-bg/60 group-hover:text-brand-bg group-active:text-brand-bg group-focus-within:text-brand-bg"
                         >
                           {tag}
                         </li>
