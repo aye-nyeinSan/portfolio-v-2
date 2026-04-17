@@ -30,12 +30,15 @@ The application follows a modular architecture to separate concerns between UI c
 (This is the Demo Video ⬇️)
 
 > Desktop Version
-<video src="https://github.com/user-attachments/assets/9ce1da72-d0d2-4e17-b2c9-8dc939789ee2" controls="controls" style="max-width: 100%;">
-</video>
+
+https://github.com/user-attachments/assets/9ce1da72-d0d2-4e17-b2c9-8dc939789ee2
+
 
 > Mobile Version
-<video src="https://github.com/user-attachments/assets/a90d3792-f9eb-45a0-a1f9-30f697f3d5bc" controls="controls" style="max-width: 100%;">
-</video>
+
+
+https://github.com/user-attachments/assets/a90d3792-f9eb-45a0-a1f9-30f697f3d5bc
+
 
 
 
