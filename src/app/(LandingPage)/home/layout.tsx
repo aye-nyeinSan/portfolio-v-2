@@ -23,7 +23,7 @@ export default function HomeLayout({
       {children}
       <div className="bg-brand-bg top-0">
         <CurvedLoop
-          marqueeText="open to work ✦ Rubi ✦ Aye Nyein San ✦ "
+          marqueeText="Available for Work ✦ Rubi ✦ Aye Nyein San ✦ "
           speed={2}
           curveAmount={400}
           direction="right"

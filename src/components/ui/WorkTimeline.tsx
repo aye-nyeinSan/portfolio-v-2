@@ -197,7 +197,7 @@ export default function WorkTimeline({ experiences }: WorkTimelineProps) {
         className="text-center mb-16 max-sm:mb-10"
       >
         <h2 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-brand-text mb-3">
-          Work Experience
+          Work Experience.
         </h2>
         <p className="text-brand-text-secondary text-lg max-sm:text-base">
           Where I&apos;ve been building things

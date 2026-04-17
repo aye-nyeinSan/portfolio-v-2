@@ -181,7 +181,7 @@ export default function EducationJourney({ education }: EducationJourneyProps) {
           className="text-center mb-4 px-10 max-sm:px-4"
         >
           <h2 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-brand-text mb-3">
-            Education
+            Education.
           </h2>
           <p className="text-brand-text-secondary text-lg max-sm:text-base">
             My learning journey so far
