@@ -35,7 +35,7 @@ export const projects: Project[] = [
     slug: "resume_api",
     title: "Resume Visitor API",
     description:
-      "A short one-to-two sentence pitch describing what the project does and why it's interesting.",
+      "FastAPI backend for my personal resume site (rubiayenyeinsan.vercel.app). Tracks unique visitors and \"love\" votes, backed by Firestore and deployed to Cloud Run via Cloud Build.",
     date: "2026",
     role: "Backend",
     thumbnail:

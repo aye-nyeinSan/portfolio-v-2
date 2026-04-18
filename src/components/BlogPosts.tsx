@@ -58,7 +58,7 @@ export default function BlogPosts({ posts }: { posts: MediumItem[] }) {
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex-1 px-0">
-                <p className="line-clamp-3 text-sm">
+                <p className="line-clamp-3 text-base">
                   {stripHtml(post.description)}
                 </p>
               </CardContent>

@@ -15,14 +15,6 @@ export default function ProjectDetails({
   return (
     <div className="min-h-screen bg-brand-bg px-10 py-30 max-sm:px-4 max-sm:py-18">
       <div className="mx-auto max-w-3xl">
-        <header className="mb-10">
-          <h1 className="text-4xl font-extrabold tracking-tight text-brand max-sm:text-3xl">
-            {project.title}
-          </h1>
-          <p className="mt-3 text-brand-text-secondary">
-            {project.description}
-          </p>
-        </header> 
 
         {content ? (
           <div
