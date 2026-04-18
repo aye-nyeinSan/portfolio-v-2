@@ -6,7 +6,7 @@ import ThemeToggle from "@/components/ui/ThemeToggle";
 import logo from "@public/images/resize-wax-logo.png";
 
 const navItems = [
-  { label: "Blog", href: "/blog" },
+  { label: "Blog", href: "/blogs" },
   { label: "Projects", href: "/projects" },
   { label: "Certificates", href: "/certificate" }
 ];
