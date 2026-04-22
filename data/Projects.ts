@@ -78,8 +78,8 @@ export const projects: Project[] = [
       "Notion like Kanban board using dnd (drag & drop lib) and Redux tool kit",
     tags: ["Next.js", "Tailwind", "Redux Toolkit", "dnd"],
     date: "2026",
-    thumbnail:
-      "https://github.com/user-attachments/assets/7f1e8d31-caa6-4a1e-aa91-e5569cbd1f74",
+    thumbnail: "https://drive.google.com/thumbnail?id=1vdYoZhEGegiLi4IBKwFy972q3ZWFC7_o&sz=w1200",
+
     videoUrl: [
       "https://github.com/user-attachments/assets/7f1e8d31-caa6-4a1e-aa91-e5569cbd1f74",
     ],
@@ -113,12 +113,17 @@ export const projects: Project[] = [
     date: "2025",
     role: "backend",
     thumbnail:
-      "https://github.com/user-attachments/assets/2b61f7d6-0123-491a-9c99-ff1b2b6f9570",
+      "https://drive.google.com/file/d/1vdYoZhEGegiLi4IBKwFy972q3ZWFC7_o/view?usp=sharing",
+
+    
     tags: [
       "Weight and Biases",
+      "colab",
+      "AWS s3",
       "FastAPI",
       "Github Actions",
       "Docker",
+      "Docker Hub",
       "Python",
     ],
     videoUrl: [],
