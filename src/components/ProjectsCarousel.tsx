@@ -9,7 +9,7 @@ export function ProjectsCarousel({ data }: ProjectsCarouselProps) {
   return (
     <div className="w-full max-w-3xl mt-10">
       <ul className="flex flex-col divide-y divide-brand-text-secondary/20 rounded-xl border border-brand-text-secondary/20 bg-brand-bg">
-        {data.map((project) => (
+        {data.slice(0, 3).map((project) => (
           <li key={project.slug}>
             <article className="group relative flex flex-col gap-2 px-5 py-4 transition-colors cursor-pointer hover:bg-brand-text-secondary/5">
               <Link
