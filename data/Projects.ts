@@ -35,7 +35,7 @@ export const projects: Project[] = [
     slug: "resume_api",
     title: "Resume Visitor API",
     description:
-      "FastAPI backend for my personal resume site (rubiayenyeinsan.vercel.app). Tracks unique visitors and \"love\" votes, backed by Firestore and deployed to Cloud Run via Cloud Build.",
+      'FastAPI backend for my personal resume site (rubiayenyeinsan.vercel.app). Tracks unique visitors and "love" votes, backed by Firestore and deployed to Cloud Run via Cloud Build.',
     date: "2026",
     role: "Backend",
     thumbnail:
@@ -55,8 +55,8 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/aye-nyeinSan/resume_api",
   },
   {
-    slug: "project-three",
-    title: "Demo Project Title",
+    slug: "myansen_frontend",
+    title: "Myanmar Language Sentiment Analysis with Feedback Loop Project",
     description:
       "Demo Describe the problem and your approach. Replace this placeholder with real project copy.",
     date: "2025 Demo ",
@@ -64,6 +64,6 @@ export const projects: Project[] = [
     thumbnail: "",
     tags: ["Next.js", "Tailwind"],
     liveUrl: "",
-    repoUrl: "",
+    repoUrl: "https://github.com/myanmar-nlp/myansen_frontend",
   },
 ];
