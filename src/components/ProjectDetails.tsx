@@ -15,6 +15,30 @@ export default function ProjectDetails({
   return (
     <div className="min-h-screen bg-brand-bg px-10 py-30 max-sm:px-4 max-sm:py-18">
       <div className="mx-auto max-w-3xl">
+        {(project.repoUrl || project.liveUrl) && (
+          <div className="mb-6 flex flex-wrap gap-3">
+            {project.repoUrl && (
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-brand px-4 py-2 text-sm font-medium text-brand-text transition-colors hover:bg-brand hover:text-brand-bg"
+              >
+                Code
+              </a>
+            )}
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-medium text-brand-bg transition-colors hover:opacity-90"
+              >
+                Live
+              </a>
+            )}
+          </div>
+        )}
 
         {content ? (
           <div
