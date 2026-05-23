@@ -15,8 +15,7 @@ export const experiences: WorkExperience[] = [
     title: "Software Engineer",
     date: "Jul 2024 - March 2025",
     company: "Greek Squad Studio",
-    companyLogo:
-      "https://media.licdn.com/dms/image/v2/D4D0BAQF4VKqzjo0HIQ/company-logo_200_200/company-logo_200_200/0/1721832583448?e=1776902400&v=beta&t=OGz5zgN-1LeWc9YnQMOroA2zdJSP7kp8iDQku3pkAaA",
+    companyLogo: "/images/companies/geeksquad.jpeg",
     companyInfo: "Digital Services Startup (Team of 6)",
     location: "Thailand",
     link: "https://www.linkedin.com/company/geek-squad-studio",
@@ -27,8 +26,7 @@ export const experiences: WorkExperience[] = [
     title: "Junior QA analyst ( Software Engineering - Focused)",
     date: "August 2025 - March 2026 ",
     company: "Ling - Language App",
-    companyLogo:
-      "https://media.licdn.com/dms/image/v2/C560BAQEqazcaM4WCdw/company-logo_200_200/company-logo_200_200/0/1669779049420/ling_app_logo?e=1776902400&v=beta&t=3n1J10Pcxso8YYYjvGNURHfGzKRsXAcjsf1tDQGZCj8",
+    companyLogo: "/images/companies/ling_app_logo.jpeg",
     companyInfo:
       "Ling is a gamified language-learning app with over 5 Million users  globally and 50,000+ Monthly Active Users",
     location: "Thailand",
