@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import QueryProvider from "@/components/QueryProvider";
 import NavBar from "@/components/NavBar";
+import AskRubi from "@/components/AskRubi";
 import Footer from "@/components/Footer";
 
 
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="light">
           <NavBar />
+          <AskRubi />
           <QueryProvider>{children}</QueryProvider>
 
           <Footer />
