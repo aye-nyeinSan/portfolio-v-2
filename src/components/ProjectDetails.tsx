@@ -22,7 +22,7 @@ export default function ProjectDetails({
                 href={project.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-brand px-4 py-2 text-sm font-medium text-brand-text transition-colors hover:bg-brand hover:text-brand-bg"
+                className="inline-flex items-center gap-2 rounded-full border border-brand px-4 py-2 text-sm font-medium text-brand-text-strong transition-colors hover:bg-brand hover:text-brand-bg"
               >
                 Code
               </a>
@@ -43,7 +43,7 @@ export default function ProjectDetails({
         {content ? (
           <div
             className="
-              max-w-none text-brand-text
+              max-w-none text-brand-text-strong
               [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:mt-8 [&_h1]:mb-4
               [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:mt-8 [&_h2]:mb-3
               [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:mt-6 [&_h3]:mb-2
@@ -51,7 +51,7 @@ export default function ProjectDetails({
               [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:my-3
               [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:my-3
               [&_li]:my-1
-              [&_a]:text-brand [&_a]:underline [&_a]:underline-offset-4
+              [&_a]:text-brand-text-strong [&_a]:underline [&_a]:underline-offset-4
               [&_code]:rounded [&_code]:bg-brand-text-secondary/10 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:text-sm
               [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:bg-brand-text-secondary/10 [&_pre]:p-4
               [&_pre_code]:bg-transparent [&_pre_code]:p-0
@@ -74,7 +74,7 @@ export default function ProjectDetails({
         {((project.videoUrl && project.videoUrl.length > 0) ||
           (project.images && project.images.length > 0)) && (
           <section className="mt-12">
-            <h2 className="mb-4 text-2xl font-semibold text-brand-text">
+            <h2 className="mb-4 text-2xl font-semibold text-brand-text-strong">
               Preview
             </h2>
 
