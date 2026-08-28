@@ -25,8 +25,8 @@ export default function NavBar() {
           className="custom-nav ima"
           ease="power2.easeOut"
           baseColor="#C69FD5"
-          pillColor="#FCFDC8"
-          hoveredPillTextColor="#FCFDC8"
+          pillColor="var(--brand-yellow)"
+          hoveredPillTextColor="var(--brand-yellow)"
           pillTextColor="#C69FD5"
           initialLoadAnimation={true}
         />

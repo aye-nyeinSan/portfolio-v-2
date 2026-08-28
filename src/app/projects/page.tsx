@@ -44,17 +44,17 @@ export default function ProjectsPage() {
                   )}
                 </div>
 
-                <div className="flex flex-1 flex-col gap-3 p-5 bg-brand-text transition-colors group-hover:text-brand-bg group-active:text-brand-bg group-focus-within:text-brand-bg">
-                  <div className="flex items-center justify-between gap-3 text-sm text-brand-text-secondary transition-colors group-hover:text-brand-bg group-active:text-brand-bg group-focus-within:text-brand-bg">
+                <div className="flex flex-1 flex-col gap-3 p-5 bg-brand-text transition-colors group-hover:text-brand-yellow group-active:text-brand-yellow group-focus-within:text-brand-yellow">
+                  <div className="flex items-center justify-between gap-3 text-sm text-brand-text-secondary transition-colors group-hover:text-brand-yellow group-active:text-brand-yellow group-focus-within:text-brand-yellow">
                     <span>{project.date}</span>
                     {project.role && <span>{project.role}</span>}
                   </div>
 
-                  <h2 className="text-xl font-semibold text-brand-text-secondary transition-colors group-hover:text-brand-bg group-active:text-brand-bg group-focus-within:text-brand-bg">
+                  <h2 className="text-xl font-semibold text-brand-text-secondary transition-colors group-hover:text-brand-yellow group-active:text-brand-yellow group-focus-within:text-brand-yellow">
                     {project.title}
                   </h2>
 
-                  <p className="text-base leading-relaxed text-brand-text-secondary transition-colors group-hover:text-brand-bg group-active:text-brand-bg group-focus-within:text-brand-bg line-clamp-4">
+                  <p className="text-base leading-relaxed text-brand-text-secondary transition-colors group-hover:text-brand-yellow group-active:text-brand-yellow group-focus-within:text-brand-yellow line-clamp-4">
                     {project.description}
                   </p>
 
@@ -63,7 +63,7 @@ export default function ProjectsPage() {
                       {project.tags.map((tag) => (
                         <li
                           key={tag}
-                          className="rounded-full border border-brand-text-secondary/30 px-2.5 py-0.5 text-sm text-brand-text-secondary transition-colors group-hover:border-brand-bg/60 group-active:border-brand-bg/60 group-focus-within:border-brand-bg/60 group-hover:text-brand-bg group-active:text-brand-bg group-focus-within:text-brand-bg"
+                          className="rounded-full border border-brand-text-secondary/30 px-2.5 py-0.5 text-sm text-brand-text-secondary transition-colors group-hover:border-brand-yellow/60 group-active:border-brand-yellow/60 group-focus-within:border-brand-yellow/60 group-hover:text-brand-yellow group-active:text-brand-yellow group-focus-within:text-brand-yellow"
                         >
                           {tag}
                         </li>
@@ -78,7 +78,7 @@ export default function ProjectsPage() {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="text-brand-text-secondary transition-colors group-hover:text-brand-bg group-active:text-brand-bg group-focus-within:text-brand-bg hover:underline"
+                          className="text-brand-text-secondary transition-colors group-hover:text-brand-yellow group-active:text-brand-yellow group-focus-within:text-brand-yellow hover:underline"
                         >
                           Live ↗
                         </Link>
@@ -88,7 +88,7 @@ export default function ProjectsPage() {
                           href={project.repoUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="text-brand-text-secondary transition-colors group-hover:text-brand-bg group-active:text-brand-bg group-focus-within:text-brand-bg hover:underline"
+                          className="text-brand-text-secondary transition-colors group-hover:text-brand-yellow group-active:text-brand-yellow group-focus-within:text-brand-yellow hover:underline"
                         >
                           Code ↗
                         </Link>
