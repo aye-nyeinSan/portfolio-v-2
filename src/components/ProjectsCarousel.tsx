@@ -18,31 +18,30 @@ export function ProjectsCarousel({ data }: ProjectsCarouselProps) {
               />
               <header className="flex flex-wrap items-center gap-x-3 gap-y-1">
                 <span
-                  className="text-lg font-semibold text-brand group-hover:underline underli
-    +ne-offset-4"
+                  className="text-lg font-semibold text-brand group-hover:underline underline-offset-4"
                 >
                   {project.title}
                 </span>
                 {project.role && (
-                  <span className="rounded-full border border-brand-text-secondary/30 px-2 py-0.5 text-xs text-brand-text-secondary">
+                  <span className="rounded-full border border-brand-text-secondary/30 px-2 py-0.5 text-sm text-brand-text-secondary">
                     {project.role}
                   </span>
                 )}
               </header>
 
               {project.description && (
-                <p className="text-sm leading-relaxed text-brand-text-secondary line-clamp-2">
+                <p className="text-base leading-relaxed text-brand-text-secondary line-clamp-3">
                   {project.description}
                 </p>
               )}
 
-              <footer className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-brand-text-secondary">
+              <footer className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-brand-text-secondary">
                 {project.tags.length > 0 && (
                   <ul className="flex flex-wrap items-center gap-1.5">
                     {project.tags.map((tag) => (
                       <li
                         key={tag}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-brand-text-secondary/30 bg-brand-text-secondary/5 px-2 py-0.5 text-xs text-brand-text-secondary"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-brand-text-secondary/30 bg-brand-text-secondary/5 px-2 py-0.5 text-sm text-brand-text-secondary"
                       >
                         <span
                           className="h-2 w-2 rounded-full bg-brand"
@@ -85,7 +84,7 @@ export function ProjectsCarousel({ data }: ProjectsCarouselProps) {
       <div className="mt-6 flex justify-center">
         <Link
           href="/projects"
-          className="text-sm text-brand-text-secondary hover:text-brand hover:underline underline-offset-4"
+          className="text-base text-brand-text-secondary hover:text-brand hover:underline underline-offset-4"
         >
           View all projects →
         </Link>

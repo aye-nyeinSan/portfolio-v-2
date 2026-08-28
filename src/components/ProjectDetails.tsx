@@ -22,7 +22,7 @@ export default function ProjectDetails({
                 href={project.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-brand px-4 py-2 text-sm font-medium text-brand-text-strong transition-colors hover:bg-brand hover:text-brand-bg"
+                className="inline-flex items-center gap-2 rounded-full border border-brand px-4 py-2 text-base font-medium text-brand-text-strong transition-colors hover:bg-brand hover:text-brand-bg"
               >
                 Code
               </a>
@@ -32,7 +32,7 @@ export default function ProjectDetails({
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-medium text-brand-bg transition-colors hover:opacity-90"
+                className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-base font-medium text-brand-bg transition-colors hover:opacity-90"
               >
                 Live
               </a>
@@ -52,7 +52,7 @@ export default function ProjectDetails({
               [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:my-3
               [&_li]:my-1
               [&_a]:text-brand-text-strong [&_a]:underline [&_a]:underline-offset-4
-              [&_code]:rounded [&_code]:bg-brand-text-secondary/10 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:text-sm
+              [&_code]:rounded [&_code]:bg-brand-text-secondary/10 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:text-[0.9em]
               [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:bg-brand-text-secondary/10 [&_pre]:p-4
               [&_pre_code]:bg-transparent [&_pre_code]:p-0
               [&_blockquote]:my-4 [&_blockquote]:border-l-4 [&_blockquote]:border-brand [&_blockquote]:pl-4 [&_blockquote]:italic

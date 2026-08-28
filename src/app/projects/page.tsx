@@ -45,7 +45,7 @@ export default function ProjectsPage() {
                 </div>
 
                 <div className="flex flex-1 flex-col gap-3 p-5 bg-brand-text transition-colors group-hover:text-brand-bg group-active:text-brand-bg group-focus-within:text-brand-bg">
-                  <div className="flex items-center justify-between gap-3 text-xs text-brand-text-secondary transition-colors group-hover:text-brand-bg group-active:text-brand-bg group-focus-within:text-brand-bg">
+                  <div className="flex items-center justify-between gap-3 text-sm text-brand-text-secondary transition-colors group-hover:text-brand-bg group-active:text-brand-bg group-focus-within:text-brand-bg">
                     <span>{project.date}</span>
                     {project.role && <span>{project.role}</span>}
                   </div>
@@ -54,7 +54,7 @@ export default function ProjectsPage() {
                     {project.title}
                   </h2>
 
-                  <p className="text-sm leading-relaxed text-brand-text-secondary transition-colors group-hover:text-brand-bg group-active:text-brand-bg group-focus-within:text-brand-bg line-clamp-3">
+                  <p className="text-base leading-relaxed text-brand-text-secondary transition-colors group-hover:text-brand-bg group-active:text-brand-bg group-focus-within:text-brand-bg line-clamp-4">
                     {project.description}
                   </p>
 
@@ -63,7 +63,7 @@ export default function ProjectsPage() {
                       {project.tags.map((tag) => (
                         <li
                           key={tag}
-                          className="rounded-full border border-brand-text-secondary/30 px-2.5 py-0.5 text-xs text-brand-text-secondary transition-colors group-hover:border-brand-bg/60 group-active:border-brand-bg/60 group-focus-within:border-brand-bg/60 group-hover:text-brand-bg group-active:text-brand-bg group-focus-within:text-brand-bg"
+                          className="rounded-full border border-brand-text-secondary/30 px-2.5 py-0.5 text-sm text-brand-text-secondary transition-colors group-hover:border-brand-bg/60 group-active:border-brand-bg/60 group-focus-within:border-brand-bg/60 group-hover:text-brand-bg group-active:text-brand-bg group-focus-within:text-brand-bg"
                         >
                           {tag}
                         </li>
@@ -72,7 +72,7 @@ export default function ProjectsPage() {
                   )}
 
                   {(project.liveUrl || project.repoUrl) && (
-                    <div className="relative z-10 flex items-center gap-4 pt-3 text-sm">
+                    <div className="relative z-10 flex items-center gap-4 pt-3 text-base">
                       {project.liveUrl && (
                         <Link
                           href={project.liveUrl}
