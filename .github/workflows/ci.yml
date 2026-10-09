@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # Lint has pre-existing errors on main; report them without failing CI.
+      # Remove `continue-on-error` once `pnpm lint` is clean.
+      - name: Lint
+        run: pnpm lint
+        continue-on-error: true
+
+      - name: Build (includes type check)
+        run: pnpm build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
